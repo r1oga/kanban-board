@@ -1,75 +1,111 @@
-const addBtns = document.querySelectorAll('.add-btn:not(.solid)');
-const saveItemBtns = document.querySelectorAll('.solid');
-const addItemContainers = document.querySelectorAll('.add-container');
-const addItems = document.querySelectorAll('.add-item');
-// Item Lists
-const itemLists = document.querySelectorAll('.drag-item-list');
-const backlogList = document.getElementById('backlog-list');
-const progressList = document.getElementById('progress-list');
-const completeList = document.getElementById('complete-list');
-const onHoldList = document.getElementById('on-hold-list');
-
-// Items
-
+const [addBtns, saveItemBtns, addItemContainers, addItems, itemLists] = [
+  '.add-btn:not(.solid)',
+  '.solid',
+  '.add-container',
+  '.add-item',
+  '.drag-item-list'
+].map(query => document.querySelectorAll(query))
+const [backlogList, progressList, completeList, onHoldList] = [
+  'backlog-list',
+  'progress-list',
+  'complete-list',
+  'on-hold-list'
+].map(id => document.getElementById(id))
 
 // Initialize Arrays
-let backlogListArray = [];
-let progressListArray = [];
-let completeListArray = [];
-let onHoldListArray = [];
-
+// let backlogListArray = [],
+//   progressListArray = [],
+//   completeListArray = [],
+//   onHoldListArray = []
+let kanban = {}
+let updatedOnLoad = false
+let draggedItem
+let currentColumn
 // Drag Functionality
 
-
 // Get Arrays from localStorage if available, set default values if not
-function getSavedColumns() {
-  if (localStorage.getItem('backlogItems')) {
-    backlogListArray = JSON.parse(localStorage.backlogItems);
-    progressListArray = JSON.parse(localStorage.progressItems);
-    completeListArray = JSON.parse(localStorage.completeItems);
-    onHoldListArray = JSON.parse(localStorage.onHoldItems);
+function getStoredKanban() {
+  if (localStorage.getItem('kanban')) {
+    kanban = JSON.parse(localStorage.kanban)
   } else {
-    backlogListArray = ['Release the course', 'Sit back and relax'];
-    progressListArray = ['Work on projects', 'Listen to music'];
-    completeListArray = ['Being cool', 'Getting stuff done'];
-    onHoldListArray = ['Being uncool'];
+    kanban = {
+      backlog: ['Release the course', 'Sit back and relax'],
+      progress: ['Work on projects', 'Listen to music'],
+      complete: ['Being cool', 'Getting stuff done'],
+      'on-hold': ['Being uncool']
+    }
   }
 }
 
 // Set localStorage Arrays
-function updateSavedColumns() {
-  localStorage.setItem('backlogItems', JSON.stringify(backlogListArray));
-  localStorage.setItem('progressItems', JSON.stringify(progressListArray));
-  localStorage.setItem('completeItems', JSON.stringify(completeListArray));
-  localStorage.setItem('onHoldItems', JSON.stringify(onHoldListArray));
+function storeKanban() {
+  localStorage.setItem('kanban', JSON.stringify(kanban))
 }
 
 // Create DOM Elements for each list item
-function createItemEl(columnEl, column, item, index) {
-  console.log('columnEl:', columnEl);
-  console.log('column:', column);
-  console.log('item:', item);
-  console.log('index:', index);
-  // List Item
-  const listEl = document.createElement('li');
-  listEl.classList.add('drag-item');
+function createItemEl(columnEl, item) {
+  const listEl = document.createElement('li')
+  listEl.classList.add('drag-item')
+  listEl.textContent = item
+  listEl.draggable = true
+  listEl.setAttribute('ondragstart', 'drag(event)')
+  columnEl.appendChild(listEl)
+}
 
+const drag = event => {
+  draggedItem = event.target
+}
+
+const allowDrop = event => {
+  event.preventDefault()
+}
+
+const dragEnter = name => {
+  const column = document.getElementById(`${name}-list`)
+  column.classList.add('over')
+  currentColumn = column
+}
+
+const drop = event => {
+  event.preventDefault()
+
+  //  remove bacground color/padding
+  Object.keys(kanban).forEach(column => {
+    const columnEl = document.getElementById(`${column}-list`)
+    columnEl.classList.remove('over')
+  })
+
+  currentColumn.appendChild(draggedItem)
+  updateLocalKanbanObject()
+  storeKanban()
+}
+
+const updateLocalKanbanObject = () => {
+  const columns = Object.keys(kanban)
+  kanban = {}
+  columns.forEach(column => {
+    kanban[column] = [
+      ...document.getElementById(`${column}-list`).children
+    ].map(item => item.textContent)
+  })
 }
 
 // Update Columns in DOM - Reset HTML, Filter Array, Update localStorage
-function updateDOM() {
+function initDOM() {
   // Check localStorage once
+  if (!updatedOnLoad) {
+    getStoredKanban()
+  }
 
-  // Backlog Column
-
-  // Progress Column
-
-  // Complete Column
-
-  // On Hold Column
-
-  // Run getSavedColumns only once, Update Local Storage
-
-
+  Object.entries(kanban).forEach(([column, items]) => {
+    const columnEl = document.getElementById(`${column}-list`)
+    columnEl.textContent = ''
+    items.forEach(item => {
+      createItemEl(columnEl, item)
+    })
+  })
 }
 
+// getStoredKanban()
+// storeKanban()
+initDOM()

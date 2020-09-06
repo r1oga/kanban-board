@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="r1oga">
+      Made by
+      <a href="https://r1oga.now.sh/" target="_blank">@r1oga</a> |
+      <a target="_blank" href="https://github.com/r1oga/spock-rock-game">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
     <h1 class="main-title">Kanban Board</h1>
     <div class="drag-container">
       <ul class="drag-list">
@@ -24,11 +31,13 @@
             <h1>Backlog</h1>
           </span>
           <div id="backlog-content ">
-            <ul class="drag-item-list" id="backlog-list">
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-            </ul>
+            <ul
+              class="drag-item-list"
+              id="backlog-list"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+              ondragenter="dragEnter('backlog')"
+            ></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
@@ -47,11 +56,13 @@
             <h1>Progress</h1>
           </span>
           <div id="progress-content ">
-            <ul class="drag-item-list" id="progress-list">
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-            </ul>
+            <ul
+              class="drag-item-list"
+              id="progress-list"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+              ondragenter="dragEnter('progress')"
+            ></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
@@ -70,11 +81,13 @@
             <h1>Complete</h1>
           </span>
           <div id="complete-content ">
-            <ul class="drag-item-list" id="complete-list">
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-            </ul>
+            <ul
+              class="drag-item-list"
+              id="complete-list"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+              ondragenter="dragEnter('complete')"
+            ></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
@@ -93,26 +106,13 @@
             <h1>On Hold</h1>
           </span>
           <div id="on-hold-content" class="custom-scroll">
-            <ul class="drag-item-list" id="on-hold-list">
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">Testing</li>
-              <li class="drag-item">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Deleniti deserunt, qui error libero laudantium assumenda
-                voluptatibus odio fugit nostrum explicabo iste ullam quae,
-                officia reprehenderit, quasi quo reiciendis fuga quam voluptatem
-                soluta voluptates numquam tempora expedita! Id nostrum laborum
-                assumenda eaque ipsam unde facilis architecto libero eius sed
-                alias rem officiis, aliquam laboriosam aperiam dicta recusandae
-                amet labore ullam optio, deserunt aspernatur voluptatibus itaque
-                voluptate. Aliquid facere dolor architecto odio ut deserunt
-                officia delectus amet tenetur rerum, dolores expedita, beatae
-                nesciunt quasi sint ex perspiciatis necessitatibus doloribus
-                natus! Facere earum quia non quis dicta, repellat placeat maxime
-                vel ex sapiente.
-              </li>
-            </ul>
+            <ul
+              class="drag-item-list"
+              id="on-hold-list"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+              ondragenter="dragEnter('on-hold')"
+            ></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
@@ -128,13 +128,7 @@
         </li>
       </ul>
     </div>
-    <footer>
-      Made by
-      <a href="https://r1oga.now.sh/" target="_blank">@r1oga</a> |
-      <a target="_blank" href="https://github.com/r1oga/spock-rock-game">
-        <i class="fab fa-github"></i>
-      </a>
-    </footer>
+
     <!-- Script -->
     <script src="script.js"></script>
   </body>

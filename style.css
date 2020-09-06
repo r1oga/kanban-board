@@ -4,13 +4,12 @@ html {
   box-sizing: border-box;
 }
 
-footer {
+.r1oga {
   font-weight: 100;
   font-size: 1.2rem;
-  position: absolute;
-  bottom: 0.5rem;
   width: 100%;
   text-align: center;
+  margin-top: 0.5rem;
 }
 
 a {
@@ -42,6 +41,7 @@ body {
 h1 {
   letter-spacing: 2px;
   text-shadow: 2px 2px 5px black;
+  margin: 5px 0px;
 }
 
 .main-title {

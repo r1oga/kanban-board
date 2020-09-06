@@ -28,12 +28,7 @@ function getStoredKanban() {
   if (localStorage.getItem('kanban')) {
     kanban = JSON.parse(localStorage.kanban)
   } else {
-    kanban = {
-      backlog: ['Release the course', 'Sit back and relax'],
-      progress: ['Work on projects', 'Listen to music'],
-      complete: ['Being cool', 'Getting stuff done'],
-      'on-hold': ['Being uncool']
-    }
+    kanban = { backlog: [], progress: [], complete: [], 'on-hold': [] }
   }
 }
 

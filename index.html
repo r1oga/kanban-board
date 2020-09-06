@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://www.google.com/s2/favicons?domain=r1oga.now.sh/"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="main-title">Kanban Board</h1>
+    <div class="drag-container">
+      <ul class="drag-list">
+        <li class="drag-column backlog-column">
+          <span class="header">
+            <h1>Backlog</h1>
+          </span>
+          <div id="backlog-content ">
+            <ul class="drag-item-list" id="backlog-list">
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+            </ul>
+          </div>
+          <div class="add-btn-group">
+            <div class="add-btn">
+              <span class="plus-sign">+</span><span>Add Item</span>
+            </div>
+            <div class="add-btn solid">
+              <span>Save Item</span>
+            </div>
+            <div class="add-container">
+              <div class="add-item"></div>
+            </div>
+          </div>
+        </li>
+        <li class="drag-column progress-column">
+          <span class="header">
+            <h1>Progress</h1>
+          </span>
+          <div id="progress-content ">
+            <ul class="drag-item-list" id="progress-list">
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+            </ul>
+          </div>
+          <div class="add-btn-group">
+            <div class="add-btn">
+              <span class="plus-sign">+</span><span>Add Item</span>
+            </div>
+            <div class="add-btn solid">
+              <span>Save Item</span>
+            </div>
+            <div class="add-container">
+              <div class="add-item"></div>
+            </div>
+          </div>
+        </li>
+        <li class="drag-column complete-column">
+          <span class="header">
+            <h1>Complete</h1>
+          </span>
+          <div id="complete-content ">
+            <ul class="drag-item-list" id="complete-list">
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+            </ul>
+          </div>
+          <div class="add-btn-group">
+            <div class="add-btn">
+              <span class="plus-sign">+</span><span>Add Item</span>
+            </div>
+            <div class="add-btn solid">
+              <span>Save Item</span>
+            </div>
+            <div class="add-container">
+              <div class="add-item"></div>
+            </div>
+          </div>
+        </li>
+        <li class="drag-column on-hold-column">
+          <span class="header">
+            <h1>On Hold</h1>
+          </span>
+          <div id="on-hold-content" class="custom-scroll">
+            <ul class="drag-item-list" id="on-hold-list">
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">Testing</li>
+              <li class="drag-item">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Deleniti deserunt, qui error libero laudantium assumenda
+                voluptatibus odio fugit nostrum explicabo iste ullam quae,
+                officia reprehenderit, quasi quo reiciendis fuga quam voluptatem
+                soluta voluptates numquam tempora expedita! Id nostrum laborum
+                assumenda eaque ipsam unde facilis architecto libero eius sed
+                alias rem officiis, aliquam laboriosam aperiam dicta recusandae
+                amet labore ullam optio, deserunt aspernatur voluptatibus itaque
+                voluptate. Aliquid facere dolor architecto odio ut deserunt
+                officia delectus amet tenetur rerum, dolores expedita, beatae
+                nesciunt quasi sint ex perspiciatis necessitatibus doloribus
+                natus! Facere earum quia non quis dicta, repellat placeat maxime
+                vel ex sapiente.
+              </li>
+            </ul>
+          </div>
+          <div class="add-btn-group">
+            <div class="add-btn">
+              <span class="plus-sign">+</span><span>Add Item</span>
+            </div>
+            <div class="add-btn solid">
+              <span>Save Item</span>
+            </div>
+            <div class="add-container">
+              <div class="add-item"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <footer>
+      Made by
+      <a href="https://r1oga.now.sh/" target="_blank">@r1oga</a> |
+      <a target="_blank" href="https://github.com/r1oga/spock-rock-game">
+        <i class="fab fa-github"></i>
+      </a>
+    </footer>
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
